@@ -3,24 +3,14 @@
 const SITE = {
   nav: [
     { href: 'index.html', label: 'Home', page: 'home' },
-    { href: 'chi-siamo.html', label: 'Chi siamo', page: 'chi-siamo' },
-    { href: 'servizi.html', label: 'Servizi', page: 'servizi' },
-    { href: 'shop.html', label: 'Shop', page: 'shop' },
-    { href: 'galleria.html', label: 'Galleria', page: 'galleria' },
-    { href: 'staff.html', label: 'Staff', page: 'staff' },
-    { href: 'news.html', label: 'News', page: 'news' },
-    { href: 'contatti.html', label: 'Contatti', page: 'contatti' },
-    { href: 'prenota.html', label: 'Prenota', page: 'prenota' }
+    { href: 'shop.html', label: 'Shop', page: 'shop' }
   ],
   footer: [
     { href: 'index.html', label: 'Home' },
-    { href: 'chi-siamo.html', label: 'Chi siamo' },
-    { href: 'servizi.html', label: 'Servizi' },
+    { href: 'index.html#servizi', label: 'Servizi' },
+    { href: 'index.html#galleria', label: 'Galleria' },
     { href: 'shop.html', label: 'Shop' },
-    { href: 'galleria.html', label: 'Galleria' },
-    { href: 'staff.html', label: 'Staff' },
-    { href: 'news.html', label: 'News' },
-    { href: 'contatti.html', label: 'Contatti' },
+    { href: 'index.html#contatti', label: 'Contatti' },
     { href: 'prenota.html', label: 'Prenota' }
   ]
 };
