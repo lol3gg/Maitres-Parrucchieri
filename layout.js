@@ -198,7 +198,7 @@ function initShopPreview(containerId, limit = 6) {
   el.innerHTML = featured.map(p => `
     <a href="shop.html" class="product-card product-card--sm">
       <div class="product-card__brand">${p.brand}</div>
-      <div class="product-card__img"><img src="${p.image}" alt="${p.name}" loading="lazy"></div>
+      <div class="product-card__img"><img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.onerror=null;this.src='assets/products/placeholder.svg'"></div>
       <h4>${p.name}</h4>
       <span class="product-card__price">${BookingUtils.formatPrice(p.price)}</span>
     </a>

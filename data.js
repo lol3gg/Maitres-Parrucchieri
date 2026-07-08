@@ -124,7 +124,7 @@ const MAITRES = {
     'Tutte', 'Shampoo', 'CONDITIONER', 'Mask', 'Olio', 'Siero', 'Spray', 'Styling', 'Finishing', 'Lotion', 'CREMA', 'Trattamento'
   ],
 
-  productImageBase: 'https://files200a.areabeauty.it/Companies/5c5bb52f-5b6c-4ac1-98c7-9dca7f1c0a1a/Products',
+  productImageBase: 'assets/products',
 
   products: [
     { id: 1, bcId: 308, name: 'Alterna Canvas More To Love Bodifying Conditioner ml 251', brand: 'Alterna Canvas', category: 'CONDITIONER', price: 30, url: 'https://maitresparrucchieri.beautycheck.it/prodotti/conditioner/alterna-canvas-more-to-love-bodifying-conditioner-ml-251/308' },
@@ -179,7 +179,8 @@ const MAITRES = {
 };
 
 MAITRES.products.forEach(p => {
-  p.image = `${MAITRES.productImageBase}/${p.bcId}/Images/1_Image.jpg`;
+  p.image = `${MAITRES.productImageBase}/${p.bcId}.jpg`;
+  p.imageFallback = `${MAITRES.productImageBase}/placeholder.svg`;
 });
 
 if (typeof module !== 'undefined') module.exports = MAITRES;

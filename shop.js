@@ -70,7 +70,8 @@
       <article class="product-card">
         <div class="product-card__brand">${p.brand}</div>
         <div class="product-card__img">
-          <img src="${p.image}" alt="${p.name}" loading="lazy" width="240" height="240">
+          <img src="${p.image}" alt="${p.name}" loading="lazy" width="240" height="240"
+            onerror="this.onerror=null;this.src='assets/products/placeholder.svg'">
           <span class="product-card__cat">${p.category}</span>
         </div>
         <h4>${p.name}</h4>
@@ -109,7 +110,7 @@
       if (!p) return '';
       return `
         <div class="cart-item">
-          <img class="cart-item__img" src="${p.image}" alt="">
+          <img class="cart-item__img" src="${p.image}" alt="" onerror="this.onerror=null;this.src='assets/products/placeholder.svg'">
           <div>
             <strong>${p.name}</strong>
             <span>${BookingUtils.formatPrice(p.price)} × ${item.qty}</span>
