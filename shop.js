@@ -69,9 +69,10 @@
     grid.innerHTML = products.map(p => `
       <article class="product-card">
         <div class="product-card__brand">${p.brand}</div>
-        <div class="product-card__img">
+        <a href="${p.url}" class="product-card__img" target="_blank" rel="noopener">
+          <img src="${p.image}" alt="${p.name}" loading="lazy" width="240" height="240">
           <span class="product-card__cat">${p.category}</span>
-        </div>
+        </a>
         <h4>${p.name}</h4>
         <div class="product-card__foot">
           <span class="product-card__price">${BookingUtils.formatPrice(p.price)}</span>
@@ -108,6 +109,7 @@
       if (!p) return '';
       return `
         <div class="cart-item">
+          <img class="cart-item__img" src="${p.image}" alt="">
           <div>
             <strong>${p.name}</strong>
             <span>${BookingUtils.formatPrice(p.price)} × ${item.qty}</span>

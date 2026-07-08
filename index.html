@@ -455,6 +455,9 @@
       el.innerHTML = featured.map(p => `
         <article class="product-card product-card--sm">
           <div class="product-card__brand">${p.brand}</div>
+          <div class="product-card__img">
+            <img src="${p.image}" alt="${p.name}" loading="lazy">
+          </div>
           <h4>${p.name}</h4>
           <span class="product-card__price">${BookingUtils.formatPrice(p.price)}</span>
         </article>
