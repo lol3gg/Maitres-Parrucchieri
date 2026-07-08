@@ -166,6 +166,16 @@
     });
 
     MaitresStorage.saveOrder({ clientName: name, clientPhone: phone, items, total: MaitresStorage.getCartTotal(MAITRES.products) });
+
+    if (typeof MaitresAPI !== 'undefined' && MaitresAPI.enabled) {
+      MaitresAPI.createOrder({
+        clientName: name,
+        clientPhone: phone,
+        items: items.map(i => ({ name: i.name, qty: i.qty, price: i.price, brand: i.brand })),
+        total: MaitresStorage.getCartTotal(MAITRES.products)
+      }).catch(() => {});
+    }
+
     MaitresStorage.clearCart();
     updateCartUI();
     closeCart();

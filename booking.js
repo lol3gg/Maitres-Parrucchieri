@@ -125,22 +125,24 @@
       return;
     }
 
-    const slots = BookingUtils.generateTimeSlots(state.date, service.duration, state.staffId);
+    els.timeList.innerHTML = '<p class="booking-hint">Caricamento slot...</p>';
 
-    if (!slots.length) {
-      els.timeList.innerHTML = '<p class="booking-hint">Nessuno slot disponibile. Prova un\'altra data.</p>';
-      return;
-    }
+    BookingUtils.generateTimeSlotsAsync(state.date, service.duration, state.staffId).then(slots => {
+      if (!slots.length) {
+        els.timeList.innerHTML = '<p class="booking-hint">Nessuno slot disponibile. Prova un\'altra data.</p>';
+        return;
+      }
 
-    els.timeList.innerHTML = slots.map(t =>
-      `<button type="button" class="time-pick ${state.time === t ? 'selected' : ''}" data-time="${t}">${t}</button>`
-    ).join('');
+      els.timeList.innerHTML = slots.map(t =>
+        `<button type="button" class="time-pick ${state.time === t ? 'selected' : ''}" data-time="${t}">${t}</button>`
+      ).join('');
 
-    els.timeList.querySelectorAll('.time-pick').forEach(btn => {
-      btn.addEventListener('click', () => {
-        state.time = btn.dataset.time;
-        renderTimes();
-        updateSidebar();
+      els.timeList.querySelectorAll('.time-pick').forEach(btn => {
+        btn.addEventListener('click', () => {
+          state.time = btn.dataset.time;
+          renderTimes();
+          updateSidebar();
+        });
       });
     });
   }
@@ -189,7 +191,7 @@
     return true;
   }
 
-  function submitBooking() {
+  async function submitBooking() {
     const service = BookingUtils.getServiceById(state.serviceId);
     const fd = new FormData(els.clientForm);
 
@@ -209,16 +211,26 @@
       notes: fd.get('notes') || ''
     };
 
-    const saved = MaitresStorage.saveAppointment(appointment);
+    els.btnNext.disabled = true;
+    els.btnNext.textContent = 'Invio...';
 
-    els.successSummary.innerHTML = `
-      <p><strong>${saved.serviceName}</strong></p>
-      <p>${new Date(saved.date + 'T12:00:00').toLocaleDateString('it-IT')} · ${saved.time}</p>
-      <p>Con ${saved.staffName}</p>
-      <p class="sidebar-ref">Ref: ${saved.id}</p>
-    `;
+    try {
+      const saved = await MaitresStorage.saveAppointmentRemote(appointment);
 
-    goToStep(5);
+      els.successSummary.innerHTML = `
+        <p><strong>${saved.serviceName}</strong></p>
+        <p>${new Date(saved.date + 'T12:00:00').toLocaleDateString('it-IT')} · ${saved.time}</p>
+        <p>Con ${saved.staffName}</p>
+        <p class="sidebar-ref">Ref: ${saved.id}</p>
+      `;
+
+      goToStep(5);
+    } catch (err) {
+      alert(err.message || 'Errore durante la prenotazione. Riprova.');
+    } finally {
+      els.btnNext.disabled = false;
+      els.btnNext.textContent = 'Conferma prenotazione ✓';
+    }
   }
 
   els.btnNext.addEventListener('click', () => {

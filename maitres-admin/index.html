@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAÎTRES Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-app">
+  <aside class="sidebar">
+    <div class="sidebar__brand">M A Î T R E S<br><small>Admin</small></div>
+    <nav class="sidebar__nav">
+      <button data-view="dashboard" class="active">📊 Dashboard</button>
+      <button data-view="agenda">📅 Agenda</button>
+      <button data-view="appointments">📋 Appuntamenti</button>
+      <button data-view="new">➕ Nuovo</button>
+      <button data-view="blocks">🚫 Blocchi</button>
+      <button data-view="orders">🛍 Ordini</button>
+      <button data-view="clients">👥 Clienti</button>
+      <button data-view="staff">✂️ Staff</button>
+    </nav>
+    <div class="sidebar__foot">
+      <button id="refreshBtn" class="btn-ghost">↻ Aggiorna</button>
+      <button id="logoutBtn" class="btn-ghost">Esci</button>
+    </div>
+  </aside>
+  <main class="main" id="mainContent"></main>
+  <script src="js/api.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

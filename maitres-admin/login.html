@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login · MAÎTRES Admin</title>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="login-page">
+  <div class="login-box">
+    <div class="login-box__brand">M A Î T R E S</div>
+    <h1>Admin Dashboard</h1>
+    <p>Gestione appuntamenti e prenotazioni</p>
+    <form id="loginForm">
+      <label>PIN di accesso<input type="password" name="pin" required placeholder="••••••••" autofocus></label>
+      <button type="submit">Accedi</button>
+    </form>
+    <p class="login-hint">API: <code id="apiUrl">http://localhost:8787</code></p>
+    <p id="loginError" class="login-error" hidden></p>
+  </div>
+  <script src="js/api.js"></script>
+  <script>
+    if (API.isLogged()) location.href = 'index.html';
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const pin = new FormData(e.target).get('pin');
+      const err = document.getElementById('loginError');
+      try {
+        const { key } = await API.login(pin);
+        API.setKey(key);
+        location.href = 'index.html';
+      } catch {
+        err.textContent = 'PIN errato o API non avviata';
+        err.hidden = false;
+      }
+    });
+  </script>
+</body>
+</html>

@@ -26,16 +26,28 @@ const MaitresStorage = {
   },
 
   saveAppointment(appointment) {
-    const all = this.getAppointments();
     const entry = {
       id: 'apt_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7),
       status: 'pending',
       createdAt: new Date().toISOString(),
       ...appointment
     };
+    const all = this.getAppointments();
     all.unshift(entry);
     this._write(STORAGE_KEYS.appointments, all);
     return entry;
+  },
+
+  async saveAppointmentRemote(appointment) {
+    if (typeof MaitresAPI !== 'undefined' && MaitresAPI.enabled) {
+      try {
+        const ok = await MaitresAPI.health();
+        if (ok) return await MaitresAPI.createAppointment(appointment);
+      } catch (e) {
+        console.warn('API fallback localStorage:', e.message);
+      }
+    }
+    return this.saveAppointment(appointment);
   },
 
   updateAppointment(id, updates) {
@@ -147,6 +159,10 @@ const BookingUtils = {
   },
 
   generateTimeSlots(date, duration, staffId) {
+    return this._generateTimeSlotsLocal(date, duration, staffId);
+  },
+
+  _generateTimeSlotsLocal(date, duration, staffId, excludeId) {
     const day = new Date(date + 'T12:00:00').getDay();
     const hours = MAITRES.hours[day];
     if (!hours) return [];
@@ -161,11 +177,26 @@ const BookingUtils = {
       const hh = String(Math.floor(t / 60)).padStart(2, '0');
       const mm = String(t % 60).padStart(2, '0');
       const time = `${hh}:${mm}`;
-      if (!this.isSlotTaken(date, time, staffId, duration)) {
+      if (!this.isSlotTaken(date, time, staffId, duration, excludeId)) {
         slots.push(time);
       }
     }
     return slots;
+  },
+
+  async generateTimeSlotsAsync(date, duration, staffId) {
+    if (typeof MaitresAPI !== 'undefined' && MaitresAPI.enabled) {
+      try {
+        const ok = await MaitresAPI.health();
+        if (ok) {
+          const { slots } = await MaitresAPI.getSlots(date, duration, staffId);
+          return slots;
+        }
+      } catch (e) {
+        console.warn('Slot API fallback:', e.message);
+      }
+    }
+    return this._generateTimeSlotsLocal(date, duration, staffId);
   },
 
   getAvailableDates(count = 21) {
