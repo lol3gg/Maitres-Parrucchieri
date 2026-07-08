@@ -9,7 +9,8 @@ const SITE = {
     { href: 'galleria.html', label: 'Galleria', page: 'galleria' },
     { href: 'staff.html', label: 'Staff', page: 'staff' },
     { href: 'news.html', label: 'News', page: 'news' },
-    { href: 'contatti.html', label: 'Contatti', page: 'contatti' }
+    { href: 'contatti.html', label: 'Contatti', page: 'contatti' },
+    { href: 'prenota.html', label: 'Prenota', page: 'prenota' }
   ],
   footer: [
     { href: 'index.html', label: 'Home' },

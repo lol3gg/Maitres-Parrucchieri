@@ -1856,7 +1856,16 @@ body:hover .cursor-glow { opacity: 0.6; }
   }
   .nav__links.open { opacity: 1; visibility: visible; }
   .nav__links a { font-size: 0.9rem; }
-  .nav__book { display: none; }
+  .nav__book {
+    display: flex;
+    padding: 10px 16px;
+    font-size: 0.65rem;
+  }
+  .nav__links a[href="prenota.html"] {
+    color: var(--pink) !important;
+    border: 1px solid var(--border-pink);
+    padding: 8px 16px;
+  }
   .nav__burger { display: flex; }
   .intro__stats { gap: 28px; }
   .hero__line--1 { letter-spacing: 0.08em; }

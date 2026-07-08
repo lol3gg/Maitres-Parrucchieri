@@ -69,10 +69,10 @@
     grid.innerHTML = products.map(p => `
       <article class="product-card">
         <div class="product-card__brand">${p.brand}</div>
-        <a href="${p.url}" class="product-card__img" target="_blank" rel="noopener">
+        <div class="product-card__img">
           <img src="${p.image}" alt="${p.name}" loading="lazy" width="240" height="240">
           <span class="product-card__cat">${p.category}</span>
-        </a>
+        </div>
         <h4>${p.name}</h4>
         <div class="product-card__foot">
           <span class="product-card__price">${BookingUtils.formatPrice(p.price)}</span>
