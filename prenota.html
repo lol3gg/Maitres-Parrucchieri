@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prenota · M A Î T R E S</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-booking">
+
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="header scrolled" id="header">
+    <nav class="nav">
+      <a href="index.html" class="nav__logo">
+        <span class="logo-ring"></span>
+        <span class="logo-text">M&nbsp;A&nbsp;Î&nbsp;T&nbsp;R&nbsp;E&nbsp;S</span>
+      </a>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="prenota.html" class="active">Prenota</a></li>
+        <li><a href="admin.html">Admin</a></li>
+      </ul>
+      <a href="prenota.html" class="nav__book"><span>Prenota</span></a>
+      <button class="nav__burger" id="navBurger" aria-label="Menu"><span></span><span></span></button>
+    </nav>
+  </header>
+
+  <main class="booking-page">
+    <div class="container">
+      <div class="booking-page__head">
+        <span class="tag tag--pink">Prenotazione online</span>
+        <h1 class="display">Prenota il tuo appuntamento</h1>
+        <p class="section-desc">Sistema interno MAÎTRES — gli appuntamenti compaiono anche nel pannello Admin per il salone.</p>
+      </div>
+
+      <!-- Progress -->
+      <div class="booking-progress" id="bookingProgress">
+        <div class="booking-progress__step active" data-step="1"><span>01</span> Servizio</div>
+        <div class="booking-progress__step" data-step="2"><span>02</span> Operatore</div>
+        <div class="booking-progress__step" data-step="3"><span>03</span> Data &amp; ora</div>
+        <div class="booking-progress__step" data-step="4"><span>04</span> I tuoi dati</div>
+        <div class="booking-progress__step" data-step="5"><span>05</span> Conferma</div>
+      </div>
+
+      <div class="booking-layout">
+        <div class="booking-main" id="bookingWizard">
+
+          <!-- STEP 1 -->
+          <div class="booking-step active" data-step="1">
+            <h2>Scegli il servizio</h2>
+            <div class="booking-filters" id="serviceFilters"></div>
+            <div class="booking-services" id="serviceList"></div>
+          </div>
+
+          <!-- STEP 2 -->
+          <div class="booking-step" data-step="2">
+            <h2>Seleziona operatore</h2>
+            <div class="booking-staff" id="staffList"></div>
+          </div>
+
+          <!-- STEP 3 -->
+          <div class="booking-step" data-step="3">
+            <h2>Scegli data e ora</h2>
+            <div class="booking-datetime">
+              <div class="booking-dates" id="dateList"></div>
+              <div class="booking-times" id="timeList">
+                <p class="booking-hint">Seleziona prima una data</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 4 -->
+          <div class="booking-step" data-step="4">
+            <h2>I tuoi dati</h2>
+            <form class="booking-form" id="clientForm">
+              <div class="form-row">
+                <label>Nome e cognome *<input type="text" name="name" required placeholder="Maria Rossi"></label>
+                <label>Telefono *<input type="tel" name="phone" required placeholder="+39 333 1234567"></label>
+              </div>
+              <label>Email<input type="email" name="email" placeholder="nome@email.com"></label>
+              <label>Note per il salone<textarea name="notes" rows="3" placeholder="Allergie, preferenze, richieste..."></textarea></label>
+            </form>
+          </div>
+
+          <!-- STEP 5 SUCCESS -->
+          <div class="booking-step" data-step="5">
+            <div class="booking-success" id="bookingSuccess">
+              <div class="booking-success__icon">✓</div>
+              <h2>Prenotazione inviata!</h2>
+              <p>Ti aspettiamo in salone. Riceverai conferma dal nostro staff.</p>
+              <div class="booking-success__card" id="successSummary"></div>
+              <div class="booking-success__actions">
+                <a href="index.html" class="btn btn--ghost">Torna al sito</a>
+                <button class="btn btn--hot" id="newBooking">Nuova prenotazione</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="booking-nav" id="bookingNav">
+            <button class="btn btn--ghost" id="btnPrev" disabled>← Indietro</button>
+            <button class="btn btn--hot" id="btnNext">Avanti →</button>
+          </div>
+        </div>
+
+        <!-- Sidebar summary -->
+        <aside class="booking-sidebar" id="bookingSidebar">
+          <h3>Riepilogo</h3>
+          <div class="sidebar-card" id="sidebarSummary">
+            <p class="sidebar-empty">Seleziona un servizio per iniziare</p>
+          </div>
+          <div class="sidebar-info">
+            <p><strong>Indirizzo</strong><br>Via XXIII Gennaio 101/A<br>61049 Urbania (PU)</p>
+            <p><strong>Tel</strong> <a href="tel:+390722317369">0722 317369</a></p>
+            <p class="sidebar-alt">Preferisci Prenotado? <a href="https://prenotado.it/salone/ma-tres-parrucchieri_224FA59154E3F5" target="_blank" rel="noopener">Prenota qui →</a></p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="storage.js"></script>
+  <script src="script.js"></script>
+  <script src="booking.js"></script>
+</body>
+</html>
