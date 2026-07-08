@@ -1,6 +1,9 @@
 const API = (() => {
   const BASE = localStorage.getItem('maitres_api') || 'http://localhost:8787';
   const KEY = 'maitres_admin_key';
+  /* Demo locale: login senza dipendere dall'API (riavvio server non necessario) */
+  const DEMO = true;
+  const DEMO_KEY = 'maitres-admin-secret-key';
 
   function headers(admin = false) {
     const h = { 'Content-Type': 'application/json' };
@@ -24,7 +27,12 @@ const API = (() => {
   return {
     base: BASE,
     login(pin) {
-      return req('/api/admin/login', { method: 'POST', body: JSON.stringify({ pin }) });
+      const p = String(pin || '').trim();
+      if (!p) return Promise.reject(new Error('Inserisci un codice'));
+      if (DEMO) {
+        return Promise.resolve({ ok: true, key: DEMO_KEY, demo: true });
+      }
+      return req('/api/admin/login', { method: 'POST', body: JSON.stringify({ pin: p }) });
     },
     setKey(key) { sessionStorage.setItem(KEY, key); },
     logout() { sessionStorage.removeItem(KEY); },

@@ -34,6 +34,7 @@ code { background: var(--card); padding: 2px 6px; font-size: 0.85em; }
 }
 .login-box button[type=submit]:hover { filter: brightness(1.1); }
 .login-hint { margin-top: 24px; font-size: 0.75rem; color: var(--dim); }
+.login-hint--demo { color: var(--pink); margin-top: 12px; }
 .login-error { color: var(--red); margin-top: 16px; font-size: 0.85rem; }
 
 /* Layout */
@@ -57,6 +58,14 @@ code { background: var(--card); padding: 2px 6px; font-size: 0.85em; }
 .sidebar__foot { padding: 16px 12px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 4px; }
 .btn-ghost { background: none; border: 1px solid var(--border); color: var(--dim); padding: 10px; cursor: pointer; font-size: 0.8rem; }
 .btn-ghost:hover { border-color: var(--pink); color: var(--pink); }
+.btn-fs { display: flex; align-items: center; justify-content: center; gap: 8px; }
+.btn-fs.is-fullscreen { border-color: var(--pink); color: var(--pink); background: rgba(255,45,122,0.08); }
+.login-fs {
+  display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%;
+  margin-top: 16px; padding: 12px; background: none; border: 1px solid var(--border);
+  color: var(--dim); cursor: pointer; font-size: 0.8rem;
+}
+.login-fs:hover, .login-fs.is-fullscreen { border-color: var(--pink); color: var(--pink); }
 
 .main { margin-left: var(--sidebar-w); flex: 1; padding: 32px clamp(20px, 4vw, 48px); min-height: 100vh; }
 .page-head { margin-bottom: 32px; }

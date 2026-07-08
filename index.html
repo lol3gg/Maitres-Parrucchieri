@@ -19,8 +19,8 @@
 
   <!-- HERO -->
   <section class="hero" id="hero">
-    <div class="hero__media">
-      <img src="https://images.unsplash.com/photo-1560066984-138d7434eb27?w=1920&q=85" alt="Salone M A Î T R E S" fetchpriority="high">
+    <div class="hero__media" aria-hidden="true">
+      <img src="https://images.unsplash.com/photo-1560066984-138d7434eb27?w=1920&q=85" alt="" fetchpriority="high" decoding="async" onerror="this.removeAttribute('src')">
       <div class="hero__veil"></div>
     </div>
     <div class="hero__inner">
@@ -393,6 +393,7 @@
 
   <script src="data.js"></script>
   <script src="storage.js"></script>
+  <script src="fullscreen.js"></script>
   <script src="layout.js"></script>
   <script src="script.js"></script>
   <script>

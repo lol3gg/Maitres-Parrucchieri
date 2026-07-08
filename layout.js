@@ -53,6 +53,14 @@ function buildHeader(currentPage, extras = '') {
       </a>
       <ul class="nav__links" id="navLinks">${buildNavLinks(currentPage)}</ul>
       ${extras}
+      <button type="button" class="nav__fs" id="fullscreenBtn" aria-label="Schermo intero" title="Schermo intero" aria-pressed="false">
+        <svg class="fs-icon fs-icon--expand" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+          <path d="M8 3H5a2 2 0 00-2 2v3M21 8V5a2 2 0 00-2-2h-3M3 16v3a2 2 0 002 2h3M16 21h3a2 2 0 002-2v-3"/>
+        </svg>
+        <svg class="fs-icon fs-icon--shrink" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true" hidden>
+          <path d="M4 14h6v6M20 10h-6V4M14 10l7-7M3 21l7-7"/>
+        </svg>
+      </button>
       <a href="prenota.html" class="nav__book"><span>Prenota</span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
@@ -98,7 +106,34 @@ function initSiteLayout(currentPage, options = {}) {
   initNavUI();
   initSectionSpy();
   initHashScroll();
+  injectFullscreenFab();
+  if (typeof initFullscreen === 'function') {
+    initFullscreen('fullscreenBtn');
+    initFullscreen('fullscreenFab');
+  }
 }
+
+function injectFullscreenFab() {
+  if (document.getElementById('fullscreenFab')) return;
+  const fab = document.createElement('button');
+  fab.type = 'button';
+  fab.id = 'fullscreenFab';
+  fab.className = 'fs-fab';
+  fab.setAttribute('aria-label', 'Schermo intero');
+  fab.title = 'Schermo intero';
+  fab.setAttribute('aria-pressed', 'false');
+  fab.innerHTML = `
+    <svg class="fs-icon fs-icon--expand" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+      <path d="M8 3H5a2 2 0 00-2 2v3M21 8V5a2 2 0 00-2-2h-3M3 16v3a2 2 0 002 2h3M16 21h3a2 2 0 002-2v-3"/>
+    </svg>
+    <svg class="fs-icon fs-icon--shrink" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true" hidden>
+      <path d="M4 14h6v6M20 10h-6V4M14 10l7-7M3 21l7-7"/>
+    </svg>
+    <span class="fs-fab__label">Schermo intero</span>`;
+  document.body.appendChild(fab);
+}
+
+window.injectFullscreenFab = injectFullscreenFab;
 
 function initNavUI() {
   const header = document.getElementById('header');

@@ -183,8 +183,12 @@ app.post('/api/orders', (req, res) => {
 
 /* ── Admin auth ── */
 app.post('/api/admin/login', (req, res) => {
-  if (req.body.pin === config.adminPin) {
-    return res.json({ ok: true, key: config.adminKey });
+  const pin = String(req.body.pin || '').trim();
+  const ok = config.demoMode
+    ? pin.length > 0
+    : pin === config.adminPin;
+  if (ok) {
+    return res.json({ ok: true, key: config.adminKey, demo: config.demoMode });
   }
   res.status(401).json({ error: 'PIN errato' });
 });
@@ -325,5 +329,6 @@ app.get('/api/admin/clients', requireAdmin, (_, res) => {
 
 app.listen(PORT, () => {
   console.log(`MAÎTRES API → http://localhost:${PORT}`);
-  console.log(`PIN admin: ${config.adminPin}`);
+  if (config.demoMode) console.log('Modalità DEMO — login admin: qualsiasi codice non vuoto');
+  else console.log(`PIN admin: ${config.adminPin}`);
 });

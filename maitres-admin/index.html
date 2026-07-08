@@ -22,12 +22,19 @@
       <button data-view="staff">✂️ Staff</button>
     </nav>
     <div class="sidebar__foot">
+      <button type="button" id="fullscreenBtn" class="btn-ghost btn-fs" aria-pressed="false" title="Schermo intero">
+        <svg class="fs-icon fs-icon--expand" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3M21 8V5a2 2 0 00-2-2h-3M3 16v3a2 2 0 002 2h3M16 21h3a2 2 0 002-2v-3"/></svg>
+        <svg class="fs-icon fs-icon--shrink" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" hidden><path d="M4 14h6v6M20 10h-6V4M14 10l7-7M3 21l7-7"/></svg>
+        Schermo intero
+      </button>
       <button id="refreshBtn" class="btn-ghost">↻ Aggiorna</button>
       <button id="logoutBtn" class="btn-ghost">Esci</button>
     </div>
   </aside>
   <main class="main" id="mainContent"></main>
   <script src="js/api.js"></script>
+  <script src="js/fullscreen.js"></script>
   <script src="js/admin.js"></script>
+  <script>initFullscreen('fullscreenBtn');</script>
 </body>
 </html>

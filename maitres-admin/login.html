@@ -12,14 +12,21 @@
     <h1>Admin Dashboard</h1>
     <p>Gestione appuntamenti e prenotazioni</p>
     <form id="loginForm">
-      <label>PIN di accesso<input type="password" name="pin" required placeholder="••••••••" autofocus></label>
+      <label>Codice di accesso<input type="password" name="pin" required placeholder="Demo: qualsiasi codice" autofocus></label>
       <button type="submit">Accedi</button>
     </form>
+    <p class="login-hint login-hint--demo">Modalità demo — scrivi qualsiasi codice per entrare</p>
     <p class="login-hint">API: <code id="apiUrl">http://localhost:8787</code></p>
+    <button type="button" id="fullscreenBtn" class="login-fs" aria-pressed="false" title="Schermo intero">
+      <svg class="fs-icon fs-icon--expand" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3M21 8V5a2 2 0 00-2-2h-3M3 16v3a2 2 0 002 2h3M16 21h3a2 2 0 002-2v-3"/></svg>
+      Schermo intero
+    </button>
     <p id="loginError" class="login-error" hidden></p>
   </div>
   <script src="js/api.js"></script>
+  <script src="js/fullscreen.js"></script>
   <script>
+    initFullscreen('fullscreenBtn');
     if (API.isLogged()) location.href = 'index.html';
     document.getElementById('loginForm').addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -29,8 +36,8 @@
         const { key } = await API.login(pin);
         API.setKey(key);
         location.href = 'index.html';
-      } catch {
-        err.textContent = 'PIN errato o API non avviata';
+      } catch (e) {
+        err.textContent = e.message || 'Errore di accesso';
         err.hidden = false;
       }
     });

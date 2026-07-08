@@ -1,6 +1,9 @@
 /* Config condivisa con il sito pubblico */
 
 module.exports = {
+  /* Demo: accetta qualsiasi PIN non vuoto al login admin */
+  demoMode: process.env.MAITRES_DEMO !== '0',
+
   adminPin: process.env.MAITRES_ADMIN_PIN || 'maitres2026',
   adminKey: process.env.MAITRES_ADMIN_KEY || 'maitres-admin-secret-key',
 
