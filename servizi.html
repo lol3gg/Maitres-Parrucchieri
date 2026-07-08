@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Servizi · M A Î T R E S</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="servizi" class="page-inner">
+
+  <div class="grain" aria-hidden="true"></div>
+  <header class="header" id="header"></header>
+
+  <main>
+    <div class="page-top container">
+      <div id="breadcrumb"></div>
+      <span class="tag tag--pink">Servizi</span>
+      <h1 class="display">Scegli la tua esperienza</h1>
+      <p class="section-desc">Trattamenti donna, uomo, tecnici e percorsi beauty — con listino e prenotazione online.</p>
+    </div>
+
+    <section class="pillars section section--dark">
+      <div class="carousel" id="serviceCarousel">
+        <div class="carousel__track">
+          <article class="pillar-card">
+            <div class="pillar-card__img"><img src="https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?w=700&q=80" alt="Trattamenti Donna"></div>
+            <div class="pillar-card__body">
+              <h3>Trattamenti Donna</h3>
+              <p>Taglio, piega, colore, balayage e ricostruzione Olaplex.</p>
+              <a href="#listino" class="link-arrow">Vedi listino</a>
+            </div>
+          </article>
+          <article class="pillar-card">
+            <div class="pillar-card__img"><img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=700&q=80" alt="Shop"></div>
+            <div class="pillar-card__body">
+              <h3>Shop</h3>
+              <p>Prodotti professionali di alta gamma.</p>
+              <a href="shop.html" class="link-arrow">Vai allo shop</a>
+            </div>
+          </article>
+          <article class="pillar-card">
+            <div class="pillar-card__img"><img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=700&q=80" alt="Tagli Uomo"></div>
+            <div class="pillar-card__body">
+              <h3>Tagli Uomo</h3>
+              <p>Barbiere e styling uomo.</p>
+              <a href="#listino" class="link-arrow">Vedi listino</a>
+            </div>
+          </article>
+          <article class="pillar-card">
+            <div class="pillar-card__img"><img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=700&q=80" alt="Offerte"></div>
+            <div class="pillar-card__body">
+              <h3>Offerte</h3>
+              <p>Ponytail Balayage e promozioni stagionali.</p>
+              <a href="news.html" class="link-arrow">Scopri di più</a>
+            </div>
+          </article>
+        </div>
+        <div class="carousel__controls">
+          <button class="carousel__btn" id="carouselPrev" aria-label="Indietro">← Indietro</button>
+          <button class="carousel__btn" id="carouselNext" aria-label="Avanti">Avanti →</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="listino section" id="listino">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="tag">Listino</span>
+          <h2 class="display display--sm">Prezzi &amp; durata</h2>
+          <p class="section-desc">Prenota dal sito o via <a href="https://prenotado.it/salone/ma-tres-parrucchieri_224FA59154E3F5" target="_blank" rel="noopener">Prenotado</a></p>
+        </div>
+        <div class="listino__grid">
+          <div class="listino__cat reveal">
+            <h3 class="listino__cat-title">Taglio Donna</h3>
+            <ul class="price-list">
+              <li><span class="price-list__name">Taglio Donna + Piega liscia</span><span class="price-list__meta"><em>1h 15min</em><strong>€70</strong></span></li>
+              <li><span class="price-list__name">Colore di base + Piega liscia</span><span class="price-list__meta"><em>1h 45min</em><strong>€70</strong></span></li>
+              <li><span class="price-list__name">Colore + Taglio + Piega liscia</span><span class="price-list__meta"><em>2h 15min</em><strong>€110</strong></span></li>
+            </ul>
+          </div>
+          <div class="listino__cat reveal">
+            <h3 class="listino__cat-title">Tecnico Donna</h3>
+            <ul class="price-list">
+              <li><span class="price-list__name">Balayage <small>solo su consulenza</small></span><span class="price-list__meta"><em>15min</em><strong>€25</strong></span></li>
+              <li class="price-list__note">Prenotabile solo dopo consulenza personalizzata.</li>
+            </ul>
+          </div>
+          <div class="listino__cat reveal">
+            <h3 class="listino__cat-title">Trattamenti</h3>
+            <ul class="price-list">
+              <li><span class="price-list__name">Consulenza Beauty Ritual</span><span class="price-list__meta"><em>30min</em><strong>€39</strong></span></li>
+              <li class="price-list__desc">Diagnosi con microcamera — su misura per te.</li>
+              <li><span class="price-list__name">Ricostruzione Olaplex + Piega</span><span class="price-list__meta"><em>1h</em><strong>€60</strong></span></li>
+            </ul>
+          </div>
+          <div class="listino__cat reveal">
+            <h3 class="listino__cat-title">Uomo</h3>
+            <ul class="price-list">
+              <li><span class="price-list__name">Barbiere &amp; taglio uomo</span><span class="price-list__meta"><a href="prenota.html?service=taglio-uomo" class="link-arrow">Prenota →</a></span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="listino__cta reveal">
+          <a href="prenota.html" class="btn btn--hot btn--lg">Prenota il tuo trattamento</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="footer"></footer>
+  <script src="layout.js"></script>
+  <script src="script.js"></script>
+  <script>initSiteLayout('servizi', { breadcrumb: 'Servizi' });</script>
+</body>
+</html>

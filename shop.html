@@ -6,40 +6,21 @@
   <title>Shop · M A Î T R E S</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="page-shop">
+<body data-page="shop" class="page-shop page-inner">
 
   <div class="grain" aria-hidden="true"></div>
-
-  <header class="header scrolled" id="header">
-    <nav class="nav">
-      <a href="index.html" class="nav__logo">
-        <span class="logo-ring"></span>
-        <span class="logo-text">M&nbsp;A&nbsp;Î&nbsp;T&nbsp;R&nbsp;E&nbsp;S</span>
-      </a>
-      <ul class="nav__links" id="navLinks">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="shop.html" class="active">Shop</a></li>
-        <li><a href="prenota.html">Prenota</a></li>
-      </ul>
-      <button class="nav__cart" id="cartToggle" aria-label="Carrello">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-        <span class="nav__cart-count" id="cartCount">0</span>
-      </button>
-      <button class="nav__burger" id="navBurger" aria-label="Menu"><span></span><span></span></button>
-    </nav>
-  </header>
+  <header class="header scrolled" id="header"></header>
 
   <main class="shop-page">
-    <div class="shop-hero">
-      <div class="container">
-        <span class="tag tag--pink">Shop</span>
-        <h1 class="display display--light">Prodotti professionali</h1>
-        <p class="section-desc section-desc--light">Catalogo ufficiale MAÎTRES — Olaplex, Maria Nila, Alterna Caviar, Iles Formula, R+Co e altri.</p>
-        <div class="brand-strip" id="brandStrip"></div>
-      </div>
+    <div class="page-top container shop-page__top">
+      <div id="breadcrumb"></div>
+      <span class="tag tag--pink">Shop</span>
+      <h1 class="display display--light">Prodotti professionali</h1>
+      <p class="section-desc section-desc--light">48 prodotti — Olaplex, Maria Nila, Alterna Caviar, Iles Formula, R+Co.</p>
+      <div class="brand-strip" id="brandStrip"></div>
     </div>
 
     <div class="container shop-layout">
@@ -54,7 +35,6 @@
           <a href="https://maitresparrucchieri.beautycheck.it/prodotti" class="link-arrow" target="_blank" rel="noopener" style="margin-top:12px;display:inline-block">Shop BeautyCheck →</a>
         </div>
       </aside>
-
       <div class="shop-main">
         <div class="shop-toolbar">
           <span id="resultCount">48 prodotti</span>
@@ -65,7 +45,6 @@
     </div>
   </main>
 
-  <!-- Cart drawer -->
   <div class="cart-drawer" id="cartDrawer">
     <div class="cart-drawer__head">
       <h3>Carrello</h3>
@@ -75,19 +54,25 @@
     <div class="cart-drawer__foot">
       <div class="cart-total"><span>Totale</span><strong id="cartTotal">€0,00</strong></div>
       <button class="btn btn--hot" id="cartOrder">Invia richiesta ordine</button>
-      <p class="cart-note">Il salone ti contatterà per conferma e pagamento.</p>
+      <p class="cart-note">Il salone ti contatterà per conferma.</p>
     </div>
   </div>
   <div class="cart-overlay" id="cartOverlay"></div>
 
-  <footer class="footer">
-    <div class="container footer__inner">
-      <p class="footer__copy">&copy; 2026 M A Î T R E S · Via XXIII Gennaio 101/A, Urbania · maitresparrucchieri@gmail.com</p>
-    </div>
-  </footer>
+  <footer class="footer" id="footer"></footer>
 
   <script src="data.js"></script>
   <script src="storage.js"></script>
+  <script src="layout.js"></script>
+  <script>
+    initSiteLayout('shop', {
+      breadcrumb: 'Shop',
+      navExtras: `<button class="nav__cart" id="cartToggle" aria-label="Carrello">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span class="nav__cart-count" id="cartCount">0</span>
+      </button>`
+    });
+  </script>
   <script src="script.js"></script>
   <script src="shop.js"></script>
 </body>

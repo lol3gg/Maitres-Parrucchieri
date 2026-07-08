@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="M A Î T R E S Parrucchieri — Salone premium donna e uomo a Urbania. Ponytail Balayage, Beauty Ritual, tagli internazionali. Prenota online.">
+  <meta name="description" content="M A Î T R E S Parrucchieri — Salone premium donna e uomo a Urbania.">
   <meta name="theme-color" content="#0a0a0a">
   <title>M A Î T R E S | Parrucchieri · Urbania</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,37 +11,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body data-page="home">
 
   <div class="grain" aria-hidden="true"></div>
   <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
-  <!-- NAV -->
-  <header class="header" id="header">
-    <nav class="nav">
-      <a href="#" class="nav__logo">
-        <span class="logo-ring"></span>
-        <span class="logo-text">M&nbsp;A&nbsp;Î&nbsp;T&nbsp;R&nbsp;E&nbsp;S</span>
-      </a>
-      <ul class="nav__links" id="navLinks">
-        <li><a href="#servizi">Servizi</a></li>
-        <li><a href="shop.html">Shop</a></li>
-        <li><a href="#editorial">Editorial</a></li>
-        <li><a href="#galleria">Galleria</a></li>
-        <li><a href="#staff">Staff</a></li>
-        <li><a href="#contatti">Contatti</a></li>
-      </ul>
-      <a href="prenota.html" class="nav__book">
-        <span>Prenota</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-      <button class="nav__burger" id="navBurger" aria-label="Menu">
-        <span></span><span></span>
-      </button>
-    </nav>
-  </header>
+  <header class="header" id="header"></header>
 
-  <!-- HERO -->
   <section class="hero" id="hero">
     <div class="hero__media">
       <img src="https://images.unsplash.com/photo-1560066984-138d7434eb27?w=1920&q=85" alt="Salone M A Î T R E S" fetchpriority="high">
@@ -57,7 +33,7 @@
       <p class="hero__claim reveal">Dove la bellezza e la salute dei tuoi capelli sono la nostra priorità.</p>
       <div class="hero__btns reveal">
         <a href="prenota.html" class="btn btn--hot">Prenota ora</a>
-        <a href="shop.html" class="btn btn--ghost">Shop</a>
+        <a href="servizi.html" class="btn btn--ghost">Scopri i servizi</a>
       </div>
     </div>
     <div class="marquee" aria-hidden="true">
@@ -66,408 +42,80 @@
         <span>PONYTAIL BALAYAGE · BEAUTY RITUAL · OLAPLEX · PASSERELLE · URBANIA · MAÎTRES · </span>
       </div>
     </div>
-    <a href="#intro" class="hero__scroll">Scroll</a>
   </section>
 
-  <!-- INTRO / CHI SIAMO -->
-  <section class="intro section" id="intro">
-    <div class="container">
-      <div class="intro__grid">
-        <div class="intro__sticky reveal">
-          <span class="tag">Chi siamo</span>
-          <h2 class="display">L'esperienza che i tuoi capelli meritano</h2>
-        </div>
-        <div class="intro__body reveal">
-          <p class="lead">Nati nel <strong>2020</strong>, facciamo il nostro meglio per offrire ai nostri clienti i trattamenti migliori, con prodotti di alta gamma.</p>
-          <p>Proponiamo in Urbania uno stile e un metodo di lavoro <em>internazionale</em>, appreso dalle numerose passerelle e sfilate alle quali il nostro staff ha partecipato.</p>
-          <p>Vieni a vivere l'esperienza che i tuoi capelli meritano — consulenza, diagnosi, risultato. Zero compromessi.</p>
-          <div class="intro__stats">
-            <div class="stat"><span class="stat__n">2020</span><span class="stat__l">Fondazione</span></div>
-            <div class="stat"><span class="stat__n">3</span><span class="stat__l">Stylist pro</span></div>
-            <div class="stat"><span class="stat__n">∞</span><span class="stat__l">Passerelle</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SERVIZI CAROUSEL (come sito originale) -->
-  <section class="pillars section section--dark" id="servizi">
+  <section class="hub section">
     <div class="container">
       <div class="section-head reveal">
-        <span class="tag tag--pink">Servizi</span>
-        <h2 class="display display--light">Scegli la tua esperienza</h2>
+        <span class="tag tag--pink">Esplora</span>
+        <h2 class="display">Scegli dove andare</h2>
+        <p class="section-desc">Ogni sezione ha la sua pagina — naviga con calma, senza scroll infinito.</p>
       </div>
-    </div>
-    <div class="carousel" id="serviceCarousel">
-      <div class="carousel__track">
-        <article class="pillar-card">
-          <div class="pillar-card__img"><img src="https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?w=700&q=80" alt="Trattamenti Donna"></div>
-          <div class="pillar-card__body">
-            <h3>Trattamenti Donna</h3>
-            <p>Taglio, piega, colore, balayage e ricostruzione Olaplex.</p>
-            <a href="#listino" class="link-arrow">scopri di più</a>
-          </div>
-        </article>
-        <article class="pillar-card">
-          <div class="pillar-card__img"><img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=700&q=80" alt="Shop"></div>
-          <div class="pillar-card__body">
-            <h3>Shop</h3>
-            <p>Prodotti professionali di alta gamma. Porta a casa la cura MAÎTRES.</p>
-            <a href="shop.html" class="link-arrow">scopri di più</a>
-          </div>
-        </article>
-        <article class="pillar-card">
-          <div class="pillar-card__img"><img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=700&q=80" alt="Tagli Uomo"></div>
-          <div class="pillar-card__body">
-            <h3>Tagli Uomo</h3>
-            <p>Barbiere e styling uomo. Look moderno, cura impeccabile.</p>
-            <a href="#listino" class="link-arrow">scopri di più</a>
-          </div>
-        </article>
-        <article class="pillar-card">
-          <div class="pillar-card__img"><img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=700&q=80" alt="Offerte"></div>
-          <div class="pillar-card__body">
-            <h3>Offerte</h3>
-            <p>Promozioni stagionali e percorsi beauty su misura.</p>
-            <a href="prenota.html" class="link-arrow">scopri di più</a>
-          </div>
-        </article>
-      </div>
-      <div class="carousel__controls">
-        <button class="carousel__btn" id="carouselPrev" aria-label="Indietro">← Indietro</button>
-        <button class="carousel__btn" id="carouselNext" aria-label="Avanti">Avanti →</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- LISTINO PRENOTADO -->
-  <section class="listino section" id="listino">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="tag">Listino</span>
-        <h2 class="display">Prezzi &amp; durata</h2>
-        <p class="section-desc">Prenota direttamente dal sito o via <a href="https://prenotado.it/salone/ma-tres-parrucchieri_224FA59154E3F5" target="_blank" rel="noopener">Prenotado</a></p>
-      </div>
-      <div class="listino__grid">
-
-        <div class="listino__cat reveal">
-          <h3 class="listino__cat-title">Taglio Donna</h3>
-          <ul class="price-list">
-            <li><span class="price-list__name">Taglio Donna + Piega liscia</span><span class="price-list__meta"><em>1h 15min</em><strong>€70</strong></span></li>
-            <li><span class="price-list__name">Colore di base + Piega liscia</span><span class="price-list__meta"><em>1h 45min</em><strong>€70</strong></span></li>
-            <li><span class="price-list__name">Colore + Taglio + Piega liscia</span><span class="price-list__meta"><em>2h 15min</em><strong>€110</strong></span></li>
-          </ul>
-        </div>
-
-        <div class="listino__cat reveal">
-          <h3 class="listino__cat-title">Tecnico Donna</h3>
-          <ul class="price-list">
-            <li><span class="price-list__name">Balayage <small>solo su consulenza</small></span><span class="price-list__meta"><em>15min</em><strong>€25</strong></span></li>
-            <li class="price-list__note">Il balayage è prenotabile solo dopo consulenza personalizzata con lo staff.</li>
-          </ul>
-        </div>
-
-        <div class="listino__cat reveal">
-          <h3 class="listino__cat-title">Trattamenti</h3>
-          <ul class="price-list">
-            <li><span class="price-list__name">Consulenza Beauty Ritual</span><span class="price-list__meta"><em>30min</em><strong>€39</strong></span></li>
-            <li class="price-list__desc">Diagnosi con microcamera. Idratazione, nutrimento, riparazione o equilibrio — su misura per te.</li>
-            <li><span class="price-list__name">Ricostruzione Olaplex + Piega</span><span class="price-list__meta"><em>1h</em><strong>€60</strong></span></li>
-          </ul>
-        </div>
-
-        <div class="listino__cat reveal">
-          <h3 class="listino__cat-title">Uomo</h3>
-          <ul class="price-list">
-            <li><span class="price-list__name">Servizi barbiere &amp; taglio uomo</span><span class="price-list__meta"><a href="prenota.html?service=taglio-uomo" class="link-arrow">Prenota →</a></span></li>
-          </ul>
-        </div>
-
-      </div>
-      <div class="listino__cta reveal">
-        <a href="prenota.html" class="btn btn--hot btn--lg">Prenota il tuo trattamento</a>
-        <a href="https://prenotado.it/salone/ma-tres-parrucchieri_224FA59154E3F5" class="btn btn--ghost" target="_blank" rel="noopener" style="margin-left:12px">Anche su Prenotado</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- SHOP PREVIEW -->
-  <section class="shop-preview section section--dark" id="shop">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="tag tag--pink">Shop</span>
-        <h2 class="display display--light">Prodotti professionali</h2>
-        <p class="section-desc section-desc--light">48 prodotti di alta gamma — Olaplex, Maria Nila, Alterna Caviar, Iles Formula, R+Co. Acquista in salone o online.</p>
-      </div>
-      <div class="brand-logos reveal">
-        <span>Olaplex</span><span>Maria Nila</span><span>Alterna Caviar</span><span>Iles Formula</span><span>R+Co</span><span>Alterna Canvas</span>
-      </div>
-      <div class="shop-preview__grid reveal" id="shopPreview"></div>
-      <div class="shop-preview__cta reveal">
-        <a href="shop.html" class="btn btn--hot btn--lg">Vai allo Shop completo</a>
-        <a href="https://maitresparrucchieri.beautycheck.it/prodotti" class="btn btn--ghost" target="_blank" rel="noopener">BeautyCheck →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- EDITORIAL: PONYTAIL BALAYAGE -->
-  <section class="editorial section section--dark" id="editorial">
-    <div class="editorial__hero reveal">
-      <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=1400&q=85" alt="Ponytail Balayage MAÎTRES">
-      <div class="editorial__hero-cap">
-        <span class="tag tag--pink">In evidenza</span>
-        <h2 class="display display--light">Ponytail Balayage</h2>
-        <p>La tecnica studiata per illuminare i capelli raccolti durante l'estate.</p>
-      </div>
-    </div>
-    <div class="container editorial__content">
-      <div class="editorial__col reveal">
-        <p class="editorial__hook">Hai mai notato una cosa?</p>
-        <p>In estate i capelli cambiano. Li raccogli più spesso. Fai una coda per andare al mare. Uno chignon per il lavoro. Un raccolto per una cena all'aperto.</p>
-        <p>Ma quando raccogli i capelli, la tua base naturale e la ricrescita delle schiariture diventano molto più visibili. La luce che amavi sulle lunghezze si perde, e la tua coda appare meno luminosa, meno armoniosa.</p>
-        <p><strong>Da questa osservazione nasce il nostro Ponytail Balayage.</strong></p>
-      </div>
-      <div class="editorial__col reveal">
-        <h3>Cos'è?</h3>
-        <p>È una tecnica di schiaritura studiata per creare punti luce che valorizzano i capelli anche quando sono raccolti.</p>
-        <ul class="check-list">
-          <li>✨ più luce</li>
-          <li>✨ più movimento</li>
-          <li>✨ effetto naturale</li>
-          <li>✨ ricrescita morbida</li>
-          <li>✨ capelli belli sciolti e in coda</li>
-        </ul>
-      </div>
-      <div class="editorial__full reveal">
-        <div class="bento">
-          <div class="bento__cell">
-            <h4>Per chi è pensato?</h4>
-            <ul class="check-list check-list--compact">
-              <li>✔ Chi ama portare la coda</li>
-              <li>✔ Chi desidera illuminare senza cambiamento radicale</li>
-              <li>✔ Look fresco e naturale in estate</li>
-              <li>✔ Servizio veloce, poca manutenzione</li>
-            </ul>
-          </div>
-          <div class="bento__cell bento__cell--accent">
-            <h4>Da MAÎTRES non esiste una tecnica uguale per tutte.</h4>
-            <p>Ogni Ponytail Balayage è personalizzato su: lunghezza, colore naturale, taglio, forma del viso, modo in cui raccogli i capelli.</p>
-            <p class="bento__quote">☀️ Quest'estate, non cambiare il tuo modo di portare i capelli. Cambia il modo in cui la luce li accompagna.</p>
-          </div>
-          <div class="bento__cell">
-            <h4>Prima di prenotare…</h4>
-            <p>Vogliamo essere sinceri. Questa tecnica non è adatta a tutte. Per alcune clienti sarà la scelta perfetta. Per altre esistono soluzioni migliori.</p>
-            <p>Preferiamo consigliarti ciò che valorizza davvero i tuoi capelli.</p>
-          </div>
-        </div>
-        <div class="editorial__actions">
-          <a href="prenota.html?service=ponytail-balayage" class="btn btn--hot">✨ Voglio la mia consulenza</a>
-          <a href="blog-ponytail-balayage.html" class="btn btn--ghost">Leggi l'articolo completo</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- GALLERIA -->
-  <section class="gallery section" id="galleria">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="tag">Galleria</span>
-        <h2 class="display">Vuoi conoscere i nostri lavori?</h2>
-        <p class="section-desc">Guarda la nostra galleria piena di lavori che ci riempiono d'orgoglio — e che ci hanno riservato un posto nel cuore dei nostri clienti.</p>
-      </div>
-    </div>
-    <div class="gallery__mosaic reveal">
-      <button class="gallery__tile gallery__tile--wide" data-idx="0"><img src="https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?w=900&q=80" alt="Lavoro 1"></button>
-      <button class="gallery__tile" data-idx="1"><img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=600&q=80" alt="Lavoro 2"></button>
-      <button class="gallery__tile gallery__tile--tall" data-idx="2"><img src="https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?w=600&q=80" alt="Lavoro 3"></button>
-      <button class="gallery__tile" data-idx="3"><img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=600&q=80" alt="Lavoro 4"></button>
-      <button class="gallery__tile" data-idx="4"><img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=600&q=80" alt="Lavoro 5"></button>
-      <button class="gallery__tile gallery__tile--wide" data-idx="5"><img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=900&q=80" alt="Lavoro 6"></button>
-    </div>
-  </section>
-
-  <!-- STAFF -->
-  <section class="staff section section--dark" id="staff">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="tag tag--pink">Il nostro staff</span>
-        <h2 class="display display--light">Hai voglia di conoscerci?!</h2>
-        <p class="section-desc section-desc--light">Ti aspettiamo in salone — ma se vuoi iniziare a conoscerci, ecco chi si prenderà cura dei tuoi capelli.</p>
-      </div>
-      <div class="staff__grid">
-        <article class="staff-card reveal">
-          <div class="staff-card__ring">A</div>
-          <h3>Arti</h3>
-          <p class="staff-card__role">Colorista · Tecnico · Olaplex</p>
-          <ul class="staff-card__tags"><li>Colore base</li><li>Balayage</li><li>Piega</li><li>Olaplex</li></ul>
-        </article>
-        <article class="staff-card reveal">
-          <div class="staff-card__ring">J</div>
-          <h3>Jem</h3>
-          <p class="staff-card__role">Stylist Donna · Shampoo</p>
-          <ul class="staff-card__tags"><li>Taglio donna</li><li>Colore</li><li>Shampoo</li></ul>
-        </article>
-        <article class="staff-card reveal">
-          <div class="staff-card__ring">D</div>
-          <h3>Daniel</h3>
-          <p class="staff-card__role">Consulente · Beauty Ritual</p>
-          <ul class="staff-card__tags"><li>Consulenza look</li><li>Beauty Ritual</li><li>Taglio donna</li></ul>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- NEWS (Blog + Galleria + Staff cards come originale) -->
-  <section class="news section" id="news">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="tag">News</span>
-        <h2 class="display">Resta aggiornata</h2>
-      </div>
-      <div class="news__grid">
-        <a href="blog-ponytail-balayage.html" class="news-card news-card--featured reveal">
-          <div class="news-card__img"><img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=800&q=80" alt="Blog"></div>
-          <div class="news-card__body">
-            <span class="news-card__cat">Blog</span>
-            <h3>Entra nel nostro Blog</h3>
-            <p>Notizie dalle passerelle, trattamenti e tagli all'ultima moda, news sui prodotti in uscita — tutto qui.</p>
-            <span class="link-arrow">Leggi →</span>
-          </div>
+      <div class="hub-grid reveal">
+        <a href="chi-siamo.html" class="hub-card">
+          <span class="hub-card__n">01</span>
+          <h3>Chi siamo</h3>
+          <p>La nostra storia dal 2020, passerelle e metodo internazionale.</p>
+          <span class="link-arrow">Entra →</span>
         </a>
-        <a href="#galleria" class="news-card reveal">
-          <div class="news-card__img"><img src="https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?w=600&q=80" alt="Galleria"></div>
-          <div class="news-card__body">
-            <span class="news-card__cat">Galleria</span>
-            <h3>Vuoi conoscere i nostri lavori?</h3>
-            <p>Lavori che ci riempiono d'orgoglio.</p>
-            <span class="link-arrow">Guarda →</span>
-          </div>
+        <a href="servizi.html" class="hub-card">
+          <span class="hub-card__n">02</span>
+          <h3>Servizi &amp; Listino</h3>
+          <p>Trattamenti donna, uomo, balayage, Beauty Ritual e prezzi.</p>
+          <span class="link-arrow">Entra →</span>
         </a>
-        <a href="#staff" class="news-card reveal">
-          <div class="news-card__img"><img src="https://images.unsplash.com/photo-1560066984-138d7434eb27?w=600&q=80" alt="Staff"></div>
-          <div class="news-card__body">
-            <span class="news-card__cat">Staff</span>
-            <h3>Hai voglia di conoscerci?!</h3>
-            <p>Ti parliamo un po' di noi.</p>
-            <span class="link-arrow">Scopri →</span>
-          </div>
+        <a href="shop.html" class="hub-card hub-card--accent">
+          <span class="hub-card__n">03</span>
+          <h3>Shop</h3>
+          <p>48 prodotti professionali — Olaplex, Maria Nila, Caviar e altri.</p>
+          <span class="link-arrow">Entra →</span>
+        </a>
+        <a href="galleria.html" class="hub-card">
+          <span class="hub-card__n">04</span>
+          <h3>Galleria</h3>
+          <p>I nostri lavori che ci riempiono d'orgoglio.</p>
+          <span class="link-arrow">Entra →</span>
+        </a>
+        <a href="staff.html" class="hub-card">
+          <span class="hub-card__n">05</span>
+          <h3>Staff</h3>
+          <p>Arti, Jem e Daniel — conosci il team.</p>
+          <span class="link-arrow">Entra →</span>
+        </a>
+        <a href="news.html" class="hub-card">
+          <span class="hub-card__n">06</span>
+          <h3>News &amp; Blog</h3>
+          <p>Ponytail Balayage, trend e novità dal salone.</p>
+          <span class="link-arrow">Entra →</span>
+        </a>
+        <a href="contatti.html" class="hub-card">
+          <span class="hub-card__n">07</span>
+          <h3>Contatti</h3>
+          <p>Urbania, Bramante — mappa, telefono, email.</p>
+          <span class="link-arrow">Entra →</span>
+        </a>
+        <a href="prenota.html" class="hub-card hub-card--hot">
+          <span class="hub-card__n">★</span>
+          <h3>Prenota</h3>
+          <p>Appuntamento online in pochi click.</p>
+          <span class="link-arrow">Prenota →</span>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- CTA CONTATTO -->
   <section class="cta-strip">
     <div class="container cta-strip__inner reveal">
       <h2 class="display display--light">Mettiti in contatto con noi</h2>
-      <a href="prenota.html" class="btn btn--hot btn--lg">Prenota ora</a>
-      <a href="#contatti" class="btn btn--ghost" style="margin-left:12px">Contattaci</a>
+      <a href="contatti.html" class="btn btn--hot btn--lg">Contattaci</a>
+      <a href="prenota.html" class="btn btn--ghost" style="margin-left:12px">Prenota ora</a>
     </div>
   </section>
 
-  <!-- CONTATTI -->
-  <section class="contact section" id="contatti">
-    <div class="container contact__grid">
-      <div class="contact__info reveal">
-        <span class="tag">Contatti</span>
-        <h2 class="display">Vieni a trovarci</h2>
-        <div class="contact__block">
-          <strong>Indirizzo</strong>
-          <p>Via XXIII Gennaio 101/A<br>Centro Commerciale Bramante<br>61049 Urbania (PU)</p>
-        </div>
-        <div class="contact__block">
-          <strong>Telefono</strong>
-          <p><a href="tel:+390722317369">+39 0722 317369</a></p>
-        </div>
-        <div class="contact__block">
-          <strong>Email</strong>
-          <p><a href="mailto:maitresparrucchieri@gmail.com">maitresparrucchieri@gmail.com</a></p>
-        </div>
-        <div class="contact__block">
-          <strong>Web</strong>
-          <p><a href="https://maitresparrucchieri.it" target="_blank" rel="noopener">maitresparrucchieri.it</a><br>
-          <a href="https://maitreshair.com" target="_blank" rel="noopener">maitreshair.com</a></p>
-        </div>
-        <div class="contact__block">
-          <strong>Servizi</strong>
-          <p>Parrucchiere per donna · Barbiere per uomo</p>
-        </div>
-        <form class="contact-form reveal" id="contactForm">
-          <strong>Scrivici un messaggio</strong>
-          <input type="text" name="name" placeholder="Nome" required>
-          <input type="email" name="email" placeholder="Email" required>
-          <textarea name="message" rows="3" placeholder="Il tuo messaggio..." required></textarea>
-          <button type="submit" class="btn btn--hot">Invia messaggio</button>
-        </form>
-        <div class="contact__actions">
-          <a href="prenota.html" class="btn btn--hot">Prenota online</a>
-          <a href="https://www.google.com/maps/search/Via+XXIII+Gennaio+101%2FA+61049+Urbania" class="btn btn--outline-dark" target="_blank" rel="noopener">Navigazione</a>
-        </div>
-      </div>
-      <div class="contact__map reveal">
-        <iframe title="Mappa MAÎTRES Urbania" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Via+XXIII+Gennaio+101%2FA+61049+Urbania&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
-      </div>
-    </div>
-  </section>
+  <footer class="footer" id="footer"></footer>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="marquee marquee--footer" aria-hidden="true">
-      <div class="marquee__track marquee__track--reverse">
-        <span>MAÎTRES · URBANIA · PREMIUM TRASH · BOOK NOW · </span>
-        <span>MAÎTRES · URBANIA · PREMIUM TRASH · BOOK NOW · </span>
-      </div>
-    </div>
-    <div class="container footer__inner">
-      <div class="footer__brand">
-        <span class="logo-text logo-text--footer">M&nbsp;A&nbsp;Î&nbsp;T&nbsp;R&nbsp;E&nbsp;S</span>
-        <p>Parrucchieri · For women and men</p>
-      </div>
-      <nav class="footer__nav">
-        <a href="#servizi">Servizi</a>
-        <a href="shop.html">Shop</a>
-        <a href="prenota.html">Prenota</a>
-        <a href="#contatti">Contatti</a>
-      </nav>
-      <p class="footer__copy">&copy; 2026 M A Î T R E S · Via XXIII Gennaio 101/A, Urbania · <a href="mailto:maitresparrucchieri@gmail.com">maitresparrucchieri@gmail.com</a> · P.IVA 02350230419</p>
-    </div>
-  </footer>
-
-  <!-- LIGHTBOX -->
-  <div class="lightbox" id="lightbox" hidden>
-    <button class="lightbox__x" id="lbClose" aria-label="Chiudi">&times;</button>
-    <button class="lightbox__arrow lightbox__arrow--prev" id="lbPrev">‹</button>
-    <img id="lbImg" src="" alt="">
-    <button class="lightbox__arrow lightbox__arrow--next" id="lbNext">›</button>
-  </div>
-
-  <script src="data.js"></script>
-  <script src="storage.js"></script>
+  <script src="layout.js"></script>
   <script src="script.js"></script>
-  <script>
-    // Shop preview homepage
-    (function () {
-      const el = document.getElementById('shopPreview');
-      if (!el || typeof MAITRES === 'undefined') return;
-      const featured = MAITRES.products.filter(p => ['Olaplex', 'Maria Nila', 'Alterna Caviar'].includes(p.brand)).slice(0, 6);
-      el.innerHTML = featured.map(p => `
-        <article class="product-card product-card--sm">
-          <div class="product-card__brand">${p.brand}</div>
-          <div class="product-card__img">
-            <img src="${p.image}" alt="${p.name}" loading="lazy">
-          </div>
-          <h4>${p.name}</h4>
-          <span class="product-card__price">${BookingUtils.formatPrice(p.price)}</span>
-        </article>
-      `).join('');
-    })();
-    document.getElementById('contactForm')?.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const fd = new FormData(e.target);
-      window.location.href = `mailto:maitresparrucchieri@gmail.com?subject=Contatto da sito&body=${encodeURIComponent('Nome: ' + fd.get('name') + '\nEmail: ' + fd.get('email') + '\n\n' + fd.get('message'))}`;
-    });
-  </script>
+  <script>initSiteLayout('home');</script>
 </body>
 </html>

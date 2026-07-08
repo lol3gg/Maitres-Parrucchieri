@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News · M A Î T R E S</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="news" class="page-inner">
+
+  <div class="grain" aria-hidden="true"></div>
+  <header class="header" id="header"></header>
+
+  <main>
+    <div class="page-top container">
+      <div id="breadcrumb"></div>
+      <span class="tag">News</span>
+      <h1 class="display">Resta aggiornata</h1>
+      <p class="section-desc">Notizie dalle passerelle, trattamenti, tagli e prodotti — tutto dal mondo MAÎTRES.</p>
+    </div>
+
+    <section class="news section">
+      <div class="container">
+        <div class="news__grid">
+          <a href="blog-ponytail-balayage.html" class="news-card news-card--featured reveal">
+            <div class="news-card__img"><img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=800&q=80" alt="Ponytail Balayage"></div>
+            <div class="news-card__body">
+              <span class="news-card__cat">Blog · In evidenza</span>
+              <h3>Ponytail Balayage</h3>
+              <p>La tecnica studiata per illuminare i capelli raccolti durante l'estate.</p>
+              <span class="link-arrow">Leggi l'articolo →</span>
+            </div>
+          </a>
+          <a href="galleria.html" class="news-card reveal">
+            <div class="news-card__img"><img src="https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?w=600&q=80" alt="Galleria"></div>
+            <div class="news-card__body">
+              <span class="news-card__cat">Galleria</span>
+              <h3>Vuoi conoscere i nostri lavori?</h3>
+              <p>Lavori che ci riempiono d'orgoglio.</p>
+              <span class="link-arrow">Guarda →</span>
+            </div>
+          </a>
+          <a href="staff.html" class="news-card reveal">
+            <div class="news-card__img"><img src="https://images.unsplash.com/photo-1560066984-138d7434eb27?w=600&q=80" alt="Staff"></div>
+            <div class="news-card__body">
+              <span class="news-card__cat">Staff</span>
+              <h3>Hai voglia di conoscerci?!</h3>
+              <p>Ti parliamo un po' di noi.</p>
+              <span class="link-arrow">Scopri →</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="editorial section section--dark">
+      <div class="editorial__hero reveal">
+        <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=1400&q=85" alt="Ponytail Balayage">
+        <div class="editorial__hero-cap">
+          <span class="tag tag--pink">Editorial</span>
+          <h2 class="display display--light display--sm">Ponytail Balayage</h2>
+          <p>Più luce, più movimento — capelli belli sciolti e in coda.</p>
+        </div>
+      </div>
+      <div class="container editorial__actions reveal" style="padding:40px 0 60px">
+        <a href="prenota.html?service=ponytail-balayage" class="btn btn--hot">✨ Voglio la mia consulenza</a>
+        <a href="blog-ponytail-balayage.html" class="btn btn--ghost">Leggi tutto</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="footer"></footer>
+  <script src="layout.js"></script>
+  <script src="script.js"></script>
+  <script>initSiteLayout('news', { breadcrumb: 'News' });</script>
+</body>
+</html>
