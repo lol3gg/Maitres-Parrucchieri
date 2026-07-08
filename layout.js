@@ -1,24 +1,47 @@
 /* Layout condiviso — navigazione e footer unici su tutte le pagine */
 
 const SITE = {
+  /* Sezioni home (anchor) + Shop pagina separata */
   nav: [
-    { href: 'index.html', label: 'Home', page: 'home' },
-    { href: 'shop.html', label: 'Shop', page: 'shop' }
+    { href: '#about', label: 'Chi siamo', page: 'about', section: true },
+    { href: '#servizi', label: 'Servizi', page: 'servizi', section: true },
+    { href: '#staff', label: 'Staff', page: 'staff', section: true },
+    { href: '#galleria', label: 'Galleria', page: 'galleria', section: true },
+    { href: '#contatti', label: 'Contatti', page: 'contatti', section: true },
+    { href: 'shop.html', label: 'Shop', page: 'shop', section: false }
   ],
   footer: [
-    { href: 'index.html', label: 'Home' },
-    { href: 'index.html#servizi', label: 'Servizi' },
-    { href: 'index.html#galleria', label: 'Galleria' },
-    { href: 'shop.html', label: 'Shop' },
-    { href: 'index.html#contatti', label: 'Contatti' },
-    { href: 'prenota.html', label: 'Prenota' }
+    { href: '#about', label: 'Chi siamo', section: true },
+    { href: '#servizi', label: 'Servizi', section: true },
+    { href: '#staff', label: 'Staff', section: true },
+    { href: '#galleria', label: 'Galleria', section: true },
+    { href: '#contatti', label: 'Contatti', section: true },
+    { href: 'shop.html', label: 'Shop', section: false },
+    { href: 'prenota.html', label: 'Prenota', section: false }
   ]
 };
 
+function resolveHref(item, onHome) {
+  if (!item.section) return item.href;
+  return onHome ? item.href : `index.html${item.href}`;
+}
+
 function buildNavLinks(currentPage) {
-  return SITE.nav.map(item =>
-    `<li><a href="${item.href}" class="${item.page === currentPage ? 'active' : ''}">${item.label}</a></li>`
-  ).join('');
+  const onHome = currentPage === 'home';
+  return SITE.nav.map(item => {
+    const href = resolveHref(item, onHome);
+    const active = !item.section && item.page === currentPage ? 'active' : '';
+    const section = item.section ? item.href.slice(1) : '';
+    return `<li><a href="${href}" class="${active}"${section ? ` data-section="${section}"` : ''}>${item.label}</a></li>`;
+  }).join('');
+}
+
+function buildFooterLinks() {
+  const onHome = document.body?.dataset.page === 'home';
+  return SITE.footer.map(item => {
+    const href = resolveHref(item, onHome);
+    return `<a href="${href}">${item.label}</a>`;
+  }).join('');
 }
 
 function buildHeader(currentPage, extras = '') {
@@ -38,7 +61,6 @@ function buildHeader(currentPage, extras = '') {
 }
 
 function buildFooter() {
-  const links = SITE.footer.map(l => `<a href="${l.href}">${l.label}</a>`).join('');
   return `
     <div class="marquee marquee--footer" aria-hidden="true">
       <div class="marquee__track marquee__track--reverse">
@@ -51,7 +73,7 @@ function buildFooter() {
         <span class="logo-text logo-text--footer">M&nbsp;A&nbsp;Î&nbsp;T&nbsp;R&nbsp;E&nbsp;S</span>
         <p>Parrucchieri · For women and men</p>
       </div>
-      <nav class="footer__nav">${links}</nav>
+      <nav class="footer__nav">${buildFooterLinks()}</nav>
       <p class="footer__copy">&copy; 2026 M A Î T R E S · Via XXIII Gennaio 101/A, Urbania ·
         <a href="mailto:maitresparrucchieri@gmail.com">maitresparrucchieri@gmail.com</a> · P.IVA 02350230419</p>
     </div>`;
@@ -74,6 +96,8 @@ function initSiteLayout(currentPage, options = {}) {
   if (breadcrumb && options.breadcrumb) breadcrumb.innerHTML = buildBreadcrumb(options.breadcrumb);
 
   initNavUI();
+  initSectionSpy();
+  initHashScroll();
 }
 
 function initNavUI() {
@@ -98,9 +122,63 @@ function initNavUI() {
       navLinks.classList.toggle('open');
       document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
     });
-    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-    document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', closeMenu));
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const href = a.getAttribute('href');
+        if (href?.startsWith('#') && document.body.dataset.page === 'home') {
+          e.preventDefault();
+          const el = document.getElementById(href.slice(1));
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            history.replaceState(null, '', href);
+            setActiveSection(href.slice(1));
+          }
+        }
+        closeMenu();
+      });
+    });
   }
+}
+
+function setActiveSection(id) {
+  document.querySelectorAll('.nav__links a[data-section]').forEach(a => {
+    a.classList.toggle('active', a.dataset.section === id);
+  });
+}
+
+function initSectionSpy() {
+  if (document.body.dataset.page !== 'home') return;
+
+  const links = document.querySelectorAll('.nav__links a[data-section]');
+  const sections = [...links]
+    .map(a => document.getElementById(a.dataset.section))
+    .filter(Boolean);
+
+  if (!sections.length) return;
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) setActiveSection(entry.target.id);
+    });
+  }, { rootMargin: '-35% 0px -55% 0px', threshold: 0.05 });
+
+  sections.forEach(s => obs.observe(s));
+
+  if (window.location.hash) {
+    const id = window.location.hash.slice(1);
+    if (sections.some(s => s.id === id)) setActiveSection(id);
+  }
+}
+
+function initHashScroll() {
+  if (document.body.dataset.page !== 'home' || !window.location.hash) return;
+  const id = window.location.hash.slice(1);
+  const el = document.getElementById(id);
+  if (!el) return;
+  requestAnimationFrame(() => {
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setActiveSection(id);
+  });
 }
 
 function initContactForm() {

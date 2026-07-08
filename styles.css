@@ -257,15 +257,19 @@ body:hover .cursor-glow { opacity: 0.6; }
 
 .nav__links {
   display: flex;
-  gap: clamp(16px, 2.5vw, 36px);
+  gap: clamp(6px, 1vw, 18px);
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .nav__links a {
-  font-size: 0.72rem;
+  font-size: 0.62rem;
   font-weight: 500;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--white-dim);
+  white-space: nowrap;
 }
 
 .nav__links a:hover { color: var(--pink); }
@@ -1626,6 +1630,7 @@ a.product-card {
 }
 
 .nav__links a.active { color: var(--pink) !important; }
+.nav__links a[data-section].active { color: var(--pink) !important; }
 .footer__copy a { color: var(--white-dim); }
 .footer__copy a:hover { color: var(--pink); }
 
@@ -2063,14 +2068,17 @@ a.product-card {
   .logo-ring { left: -8px; width: 6px; height: 6px; }
 
   .nav__links {
+    display: flex;
     position: fixed;
     inset: 0;
     padding: calc(var(--header-h) + env(safe-area-inset-top)) 24px 40px;
     background: rgba(8, 8, 8, 0.98);
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 32px;
+    justify-content: flex-start;
+    padding-top: calc(var(--header-h) + 48px + env(safe-area-inset-top));
+    gap: 24px;
+    overflow-y: auto;
     opacity: 0;
     visibility: hidden;
     transition: all 0.4s;
@@ -2078,7 +2086,7 @@ a.product-card {
   }
 
   .nav__links.open { opacity: 1; visibility: visible; }
-  .nav__links a { font-size: 1rem; padding: 8px 0; }
+  .nav__links a { font-size: 0.95rem; padding: 10px 0; min-height: 44px; display: flex; align-items: center; }
 
   .nav__book {
     display: flex;
