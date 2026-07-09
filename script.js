@@ -96,32 +96,3 @@ function initMarquees() {
 
 window.initMarquees = initMarquees;
 initMarquees();
-
-/* Marquee — riempie tutta la riga su qualsiasi larghezza schermo */
-function initMarquees() {
-  document.querySelectorAll('.marquee__track').forEach(track => {
-    if (track.dataset.marqueeReady) return;
-    const first = track.querySelector('span');
-    const marquee = track.closest('.marquee');
-    if (!first || !marquee) return;
-
-    const text = first.textContent.trim();
-    track.innerHTML = '';
-
-    const addSpan = () => {
-      const s = document.createElement('span');
-      s.textContent = text;
-      track.appendChild(s);
-    };
-
-    addSpan();
-    addSpan();
-    while (track.scrollWidth < marquee.offsetWidth * 2) addSpan();
-    if (track.children.length % 2 !== 0) addSpan();
-
-    track.dataset.marqueeReady = '1';
-  });
-}
-
-window.initMarquees = initMarquees;
-initMarquees();
