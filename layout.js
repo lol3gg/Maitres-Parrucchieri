@@ -3,7 +3,7 @@
 const SITE = {
   /* Sezioni home (anchor) + Shop pagina separata */
   nav: [
-    { href: '#about', label: 'Chi siamo', page: 'about', section: true },
+    { href: '#hero', label: 'Chi siamo', page: 'about', section: true },
     { href: '#servizi', label: 'Servizi', page: 'servizi', section: true },
     { href: '#staff', label: 'Staff', page: 'staff', section: true },
     { href: '#galleria', label: 'Galleria', page: 'galleria', section: true },
@@ -11,7 +11,7 @@ const SITE = {
     { href: 'shop.html', label: 'Shop', page: 'shop', section: false }
   ],
   footer: [
-    { href: '#about', label: 'Chi siamo', section: true },
+    { href: '#hero', label: 'Chi siamo', section: true },
     { href: '#servizi', label: 'Servizi', section: true },
     { href: '#staff', label: 'Staff', section: true },
     { href: '#galleria', label: 'Galleria', section: true },
@@ -53,17 +53,19 @@ function buildHeader(currentPage, extras = '') {
       </a>
       <ul class="nav__links" id="navLinks">${buildNavLinks(currentPage)}</ul>
       ${extras}
-      <button type="button" class="nav__fs" id="fullscreenBtn" aria-label="Schermo intero" title="Schermo intero" aria-pressed="false">
-        <svg class="fs-icon fs-icon--expand" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-          <path d="M8 3H5a2 2 0 00-2 2v3M21 8V5a2 2 0 00-2-2h-3M3 16v3a2 2 0 002 2h3M16 21h3a2 2 0 002-2v-3"/>
-        </svg>
-        <svg class="fs-icon fs-icon--shrink" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true" hidden>
-          <path d="M4 14h6v6M20 10h-6V4M14 10l7-7M3 21l7-7"/>
-        </svg>
-      </button>
-      <a href="prenota.html" class="nav__book"><span>Prenota</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
+      <div class="nav__cta">
+        <button type="button" class="nav__fs" id="fullscreenBtn" aria-label="Schermo intero" title="Schermo intero" aria-pressed="false">
+          <svg class="fs-icon fs-icon--expand" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+            <path d="M8 3H5a2 2 0 00-2 2v3M21 8V5a2 2 0 00-2-2h-3M3 16v3a2 2 0 002 2h3M16 21h3a2 2 0 002-2v-3"/>
+          </svg>
+          <svg class="fs-icon fs-icon--shrink" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true" hidden>
+            <path d="M4 14h6v6M20 10h-6V4M14 10l7-7M3 21l7-7"/>
+          </svg>
+        </button>
+        <a href="prenota.html" class="nav__book"><span>Prenota</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
       <button class="nav__burger" id="navBurger" aria-label="Menu"><span></span><span></span></button>
     </nav>`;
 }
@@ -98,7 +100,7 @@ function initSiteLayout(currentPage, options = {}) {
 
   if (header) {
     header.innerHTML = buildHeader(currentPage, options.navExtras || '');
-    if (currentPage !== 'home') header.classList.add('scrolled');
+    header.classList.add('scrolled');
   }
   if (footer) footer.innerHTML = buildFooter();
   if (breadcrumb && options.breadcrumb) breadcrumb.innerHTML = buildBreadcrumb(options.breadcrumb);
@@ -106,34 +108,10 @@ function initSiteLayout(currentPage, options = {}) {
   initNavUI();
   initSectionSpy();
   initHashScroll();
-  injectFullscreenFab();
-  if (typeof initFullscreen === 'function') {
-    initFullscreen('fullscreenBtn');
-    initFullscreen('fullscreenFab');
-  }
+  document.getElementById('fullscreenFab')?.remove();
+  if (typeof initFullscreen === 'function') initFullscreen('fullscreenBtn');
+  if (typeof initMarquees === 'function') initMarquees();
 }
-
-function injectFullscreenFab() {
-  if (document.getElementById('fullscreenFab')) return;
-  const fab = document.createElement('button');
-  fab.type = 'button';
-  fab.id = 'fullscreenFab';
-  fab.className = 'fs-fab';
-  fab.setAttribute('aria-label', 'Schermo intero');
-  fab.title = 'Schermo intero';
-  fab.setAttribute('aria-pressed', 'false');
-  fab.innerHTML = `
-    <svg class="fs-icon fs-icon--expand" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-      <path d="M8 3H5a2 2 0 00-2 2v3M21 8V5a2 2 0 00-2-2h-3M3 16v3a2 2 0 002 2h3M16 21h3a2 2 0 002-2v-3"/>
-    </svg>
-    <svg class="fs-icon fs-icon--shrink" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true" hidden>
-      <path d="M4 14h6v6M20 10h-6V4M14 10l7-7M3 21l7-7"/>
-    </svg>
-    <span class="fs-fab__label">Schermo intero</span>`;
-  document.body.appendChild(fab);
-}
-
-window.injectFullscreenFab = injectFullscreenFab;
 
 function initNavUI() {
   const header = document.getElementById('header');
@@ -141,9 +119,7 @@ function initNavUI() {
   const navLinks = document.getElementById('navLinks');
 
   if (header) {
-    window.addEventListener('scroll', () => {
-      header.classList.toggle('scrolled', window.scrollY > 40 || document.body.dataset.page !== 'home');
-    }, { passive: true });
+    header.classList.add('scrolled');
   }
 
   if (burger && navLinks) {
@@ -162,11 +138,18 @@ function initNavUI() {
         const href = a.getAttribute('href');
         if (href?.startsWith('#') && document.body.dataset.page === 'home') {
           e.preventDefault();
-          const el = document.getElementById(href.slice(1));
-          if (el) {
-            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            history.replaceState(null, '', href);
-            setActiveSection(href.slice(1));
+          const id = href.slice(1);
+          if (id === 'hero' || href === '#') {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            history.replaceState(null, '', '#hero');
+            setActiveSection('hero');
+          } else {
+            const el = document.getElementById(id);
+            if (el) {
+              el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              history.replaceState(null, '', href);
+              setActiveSection(id);
+            }
           }
         }
         closeMenu();
@@ -192,22 +175,35 @@ function initSectionSpy() {
   if (!sections.length) return;
 
   const obs = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) setActiveSection(entry.target.id);
-    });
-  }, { rootMargin: '-35% 0px -55% 0px', threshold: 0.05 });
+    const visible = entries.filter(e => e.isIntersecting);
+    if (!visible.length) return;
+    const best = visible.reduce((a, b) =>
+      a.intersectionRatio >= b.intersectionRatio ? a : b
+    );
+    setActiveSection(best.target.id);
+  }, { rootMargin: '-28% 0px -58% 0px', threshold: [0, 0.12, 0.3, 0.5] });
 
   sections.forEach(s => obs.observe(s));
 
   if (window.location.hash) {
     const id = window.location.hash.slice(1);
-    if (sections.some(s => s.id === id)) setActiveSection(id);
+    if (id === 'hero') setActiveSection('hero');
+    else if (sections.some(s => s.id === id)) setActiveSection(id);
+  } else if (window.scrollY < 120) {
+    setActiveSection('hero');
   }
 }
 
 function initHashScroll() {
   if (document.body.dataset.page !== 'home' || !window.location.hash) return;
   const id = window.location.hash.slice(1);
+  if (id === 'hero') {
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setActiveSection('hero');
+    });
+    return;
+  }
   const el = document.getElementById(id);
   if (!el) return;
   requestAnimationFrame(() => {

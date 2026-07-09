@@ -6,6 +6,8 @@ let fsReady = false;
 let fsNavReady = false;
 let fsNavBusy = false;
 
+document.getElementById('fullscreenFab')?.remove();
+
 function isFs() {
   return !!(document.fullscreenElement || document.webkitFullscreenElement);
 }
@@ -19,7 +21,12 @@ function setFsWanted(on) {
   else sessionStorage.removeItem(FS_KEY);
 }
 
+function removeFullscreenFab() {
+  document.getElementById('fullscreenFab')?.remove();
+}
+
 function initFullscreen(btnId = 'fullscreenBtn') {
+  removeFullscreenFab();
   const btn = document.getElementById(btnId);
   if (!btn || fsButtons.has(btn)) return;
   fsButtons.add(btn);
@@ -50,8 +57,6 @@ function initFullscreen(btnId = 'fullscreenBtn') {
       const shrink = b.querySelector('.fs-icon--shrink');
       if (expand) expand.hidden = on;
       if (shrink) shrink.hidden = !on;
-      const label = b.querySelector('.fs-fab__label');
-      if (label) label.textContent = on ? 'Esci' : 'Schermo intero';
     });
   }
 
@@ -98,10 +103,8 @@ function loadScriptFresh(src) {
 
 function rebindFullscreenUI() {
   fsButtons.clear();
-  document.getElementById('fullscreenFab')?.remove();
-  if (typeof window.injectFullscreenFab === 'function') window.injectFullscreenFab();
+  removeFullscreenFab();
   initFullscreen('fullscreenBtn');
-  initFullscreen('fullscreenFab');
 }
 
 async function softNavigate(url, { replaceHistory = false } = {}) {

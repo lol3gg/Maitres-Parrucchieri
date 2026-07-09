@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: /maitres-admin/
+Disallow: /maitres-api/
+
+Sitemap: https://lol3gg.github.io/Maitres-Parrucchieri/sitemap.xml

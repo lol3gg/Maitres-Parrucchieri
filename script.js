@@ -24,16 +24,6 @@ if (reveals.length) {
   reveals.forEach(el => revealObs.observe(el));
 }
 
-// Service carousel
-const track = document.querySelector('.carousel__track');
-const prevBtn = document.getElementById('carouselPrev');
-const nextBtn = document.getElementById('carouselNext');
-if (track && prevBtn && nextBtn) {
-  const scrollAmount = () => track.querySelector('.pillar-card')?.offsetWidth + 20 || 360;
-  prevBtn.addEventListener('click', () => track.scrollBy({ left: -scrollAmount(), behavior: 'smooth' }));
-  nextBtn.addEventListener('click', () => track.scrollBy({ left: scrollAmount(), behavior: 'smooth' }));
-}
-
 // Gallery lightbox
 const tiles = document.querySelectorAll('.gallery__tile');
 const lightbox = document.getElementById('lightbox');
@@ -77,3 +67,61 @@ if (tiles.length && lightbox) {
     if (e.key === 'ArrowRight') navLb(1);
   });
 }
+
+/* Marquee — riempie tutta la riga su qualsiasi larghezza schermo */
+function initMarquees() {
+  document.querySelectorAll('.marquee__track').forEach(track => {
+    if (track.dataset.marqueeReady) return;
+    const first = track.querySelector('span');
+    const marquee = track.closest('.marquee');
+    if (!first || !marquee) return;
+
+    const text = first.textContent.trim();
+    track.innerHTML = '';
+
+    const addSpan = () => {
+      const s = document.createElement('span');
+      s.textContent = text;
+      track.appendChild(s);
+    };
+
+    addSpan();
+    addSpan();
+    while (track.scrollWidth < marquee.offsetWidth * 2) addSpan();
+    if (track.children.length % 2 !== 0) addSpan();
+
+    track.dataset.marqueeReady = '1';
+  });
+}
+
+window.initMarquees = initMarquees;
+initMarquees();
+
+/* Marquee — riempie tutta la riga su qualsiasi larghezza schermo */
+function initMarquees() {
+  document.querySelectorAll('.marquee__track').forEach(track => {
+    if (track.dataset.marqueeReady) return;
+    const first = track.querySelector('span');
+    const marquee = track.closest('.marquee');
+    if (!first || !marquee) return;
+
+    const text = first.textContent.trim();
+    track.innerHTML = '';
+
+    const addSpan = () => {
+      const s = document.createElement('span');
+      s.textContent = text;
+      track.appendChild(s);
+    };
+
+    addSpan();
+    addSpan();
+    while (track.scrollWidth < marquee.offsetWidth * 2) addSpan();
+    if (track.children.length % 2 !== 0) addSpan();
+
+    track.dataset.marqueeReady = '1';
+  });
+}
+
+window.initMarquees = initMarquees;
+initMarquees();

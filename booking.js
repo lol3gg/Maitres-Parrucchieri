@@ -168,8 +168,9 @@
     state.step = n;
     els.steps.forEach(s => s.classList.toggle('active', +s.dataset.step === n));
     els.progress.forEach(p => {
-      p.classList.toggle('active', +p.dataset.step <= n);
-      p.classList.toggle('done', +p.dataset.step < n);
+      const stepNum = +p.dataset.step;
+      p.classList.toggle('active', stepNum === n);
+      p.classList.toggle('done', stepNum < n);
     });
     els.btnPrev.disabled = n === 1;
     els.btnNext.textContent = n === 4 ? 'Conferma prenotazione ✓' : 'Avanti →';

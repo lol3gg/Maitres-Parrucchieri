@@ -2,6 +2,43 @@
 (function () {
   if (!document.getElementById('productGrid')) return;
 
+  const REMOTE_IMG = (bcId) =>
+    `https://files200a.areabeauty.it/Companies/5c5bb52f-5b6c-4ac1-98c7-9dca7f1c0a1a/Products/${bcId}/Images/1_Image.jpg`;
+
+  const HERO_PRODUCTS = [100, 97, 126, 248, 105, 118, 128, 304];
+
+  function productImg(p) {
+    return `${MAITRES.productImageBase}/${p.bcId}.jpg`;
+  }
+
+  function productImgFallback(p) {
+    return REMOTE_IMG(p.bcId);
+  }
+
+  function initShopHero() {
+    const mosaic = document.getElementById('shopHeroMosaic');
+    if (!mosaic) return;
+
+    const tiles = HERO_PRODUCTS
+      .map(bcId => MAITRES.products.find(p => p.bcId === bcId))
+      .filter(Boolean);
+
+    const tileClass = (i) => {
+      if (i === 0) return 'shop-hero__tile shop-hero__tile--lead';
+      if (i === 5) return 'shop-hero__tile shop-hero__tile--wide';
+      return 'shop-hero__tile';
+    };
+
+    mosaic.innerHTML = tiles.map((p, i) => `
+      <div class="${tileClass(i)}">
+        <img src="${productImg(p)}" alt="" loading="${i < 2 ? 'eager' : 'lazy'}" decoding="async"
+          onerror="this.onerror=null;this.src='${productImgFallback(p)}'">
+      </div>
+    `).join('');
+  }
+
+  initShopHero();
+
   let activeCategory = 'Tutte';
   let activeBrand = 'Tutti';
   let searchQuery = '';
@@ -71,7 +108,7 @@
         <div class="product-card__brand">${p.brand}</div>
         <div class="product-card__img">
           <img src="${p.image}" alt="${p.name}" loading="lazy" width="240" height="240"
-            onerror="this.onerror=null;this.src='assets/products/placeholder.svg'">
+            onerror="this.onerror=null;this.src='${REMOTE_IMG(p.bcId)}';this.onerror=function(){this.src='assets/products/placeholder.svg'}">
           <span class="product-card__cat">${p.category}</span>
         </div>
         <h4>${p.name}</h4>
@@ -110,7 +147,7 @@
       if (!p) return '';
       return `
         <div class="cart-item">
-          <img class="cart-item__img" src="${p.image}" alt="" onerror="this.onerror=null;this.src='assets/products/placeholder.svg'">
+          <img class="cart-item__img" src="${p.image}" alt="${p.name}" onerror="this.onerror=null;this.src='assets/products/placeholder.svg'">
           <div>
             <strong>${p.name}</strong>
             <span>${BookingUtils.formatPrice(p.price)} × ${item.qty}</span>
